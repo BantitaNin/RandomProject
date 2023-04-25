@@ -1,0 +1,5 @@
+nin 72
+thailand 58
+nin 54
+nin2 52
+opo 50
