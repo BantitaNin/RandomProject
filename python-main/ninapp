@@ -1,0 +1,87 @@
+from tkinter import *
+from PIL import ImageTk, Image
+from tkinter import messagebox
+class window:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Maplestory")
+        self.root.geometry("1000x500")
+        self.root.resizable(False, False)
+
+        #background
+
+        self.bg2 = PhotoImage(file="12.png")
+        self.bg_image2 = Button(self.root, image=self.bg2, command= self.wtf ).place(x=0, y=0 , relwidth=1, relheight=1)
+
+        #Login frame
+        Frame_login = Frame(self.root, bg="#e8d7bc")
+        Frame_login.place(x=250, y=150, width=500, height =250)
+        title= Label(Frame_login, text="Login",font=("Impact",25,"bold"), fg="#766242", bg="#e8d7bc").place(x=200, y=20)
+        #username
+        lbl_user = Label(Frame_login, text="Username:", font=("Goundy old style", 13, "bold"), fg="grey", bg="#e8d7bc").place(x=20,y=92)
+        lbl_password = Label(Frame_login, text="Password:", font=("Goundy old style", 13, "bold"), fg="grey",bg="#e8d7bc").place(x=20, y=152)
+        self.username = Entry(Frame_login, font =("Goundy old style",13), bg="#E7E6E6")
+        self.username.place(x=130,y=90, width =300, height = 25)
+        self.password = Entry(Frame_login, font=("Goundy old style", 13), bg="#E7E6E6")
+        self.password.place(x=130, y=150, width=300, height=25)
+        forget = Button(Frame_login, text="forgot password", cursor="hand2",bd=0, font=("Goundy old style",10, "bold"), fg="grey", bg="#e8d7bc").place(x=320, y=180)
+        submit = Button(Frame_login,command=self.check_function,cursor="hand2", text="submit", font=("Goundy old style", 10, "bold"), fg="white", bg="#766242").place(x=420, y=216, width=78, height= 30)
+        register = Button(Frame_login, text="Register",command = self.register,cursor="hand2",font=("Goundy old style", 10, "bold"),fg="white", bg="#766242").place(x=2, y=216, width=78, height = 30)
+    def check_function(self):
+             if self.username.get()=="" or self.password.get()=="":
+                messagebox.showerror("error", "All fields are require", parent=self.root)
+    def wtf(self):
+        messagebox.showerror("NO", "No you stupid" ,parent=self.root)
+    def register(self):
+
+        window = Tk()
+        window.title('register')
+        window.geometry("500x500")
+        window.config(bg='#D4BEA0')
+        title_reg = Label(window, text="Register", font=("Impact", 25, "bold"), bg="#D4BEA0").place(x=200,y=20)
+        #username and password
+
+        lbl_user = Label(window, text="Name:", font=("Goundy old style", 13, "bold"),
+                         bg="#D4BEA0").place(x=20, y=92)
+        lbl_password = Label(window, text="Last name:", font=("Goundy old style", 13, "bold"), bg="#D4BEA0").place(x=20, y=152)
+        name = Entry(window, font=("Goundy old style", 13), bg="#E7E6E6")
+        name.place(x=130, y=90, width=300, height=25)
+        lastname = Entry(window, font=("Goundy old style", 13), bg="#E7E6E6")
+        lastname.place(x=130, y=150, width=300, height=25)
+        # name
+        lbl_user = Label(window, text="Username:", font=("Goundy old style", 13, "bold"),
+                         bg="#D4BEA0").place(x=20, y=200)
+        lbl_password = Label(window, text="Password:", font=("Goundy old style", 13, "bold"),
+                             bg="#D4BEA0").place(x=20, y=250)
+        username2 = Entry(window, font=("Goundy old style", 13), bg="#E7E6E6")
+        username2.place(x=130, y=200, width=300, height=25)
+        password2 = Entry(window, font=("Goundy old style", 13), bg="#E7E6E6")
+        password2.place(x=130, y=250, width=300, height=25)
+        lbl_confirmpassword = Label(window, text="Confirm Password:", font=("Goundy old style", 13, "bold"),
+                             bg="#D4BEA0").place(x=20, y=300)
+        conpassword = Entry(window, font=("Goundy old style", 13), bg="#E7E6E6")
+        conpassword.place(x=180, y=300, width=250, height=25)
+        read = Button(window, text="READ HERE",  cursor="hand2", command = self.readhere,font=("Goundy old style", 10, "bold"), fg="white", bg="#766242").place(x=20, y=350, width=78,height=30)
+        chk=Checkbutton(window, text="YES i know", bg="#D4BEA0").place(x=115, y=350)
+        close = Button(window, text="Register",cursor="hand2", command= self.check,font=("Goundy old style", 20, "bold"),fg="#D4BEA0", bg="#766242").place(x=190, y=400, )
+    def check(self):
+
+        if self.username2.get() == "" or self.password2.get() == ""  or self.conpassword.get() =="" or self.name.get() =="" or self.lastname.get() =="":
+            messagebox.showerror("bishh", "All fields are require", parent=self.root)
+        elif self.check.get() == 0:
+            messagebox.showerror("bitchhh", "Read and check", parent=self.root)
+        else:
+            messagebox.showerror("success", "sucess", parent=self.root)
+
+    def readhere(self):
+        window2 = Tk()
+        window2.title('register')
+        window2.geometry("800x800")
+        window2.config(bg="#D4BEA0")
+        file = open('ascii-art.txt', 'r')
+        f= file.read()
+        fuc = Label(window2, text=f, font=("Goundy old style", 10), bg="#D4BEA0").place(x=0, y=0)
+
+root = Tk()
+obj = window(root)
+root.mainloop()
